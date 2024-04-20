@@ -18,5 +18,13 @@ def row_addition(r1, r2, k):
     for i in range(len(matrix[r1])):
         matrix[r1][i] += k * matrix[r2][i]
 
+def print_matrix(matrix):
+    print("[")
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
+            print(matrix[i][j], end="\t")
+        print()
+    print("]")
 
 
+main()
