@@ -26,5 +26,3 @@ def print_matrix(matrix):
         print()
     print("]")
 
-
-main()
