@@ -13,9 +13,10 @@ def row_multiplication(row, k):
     for col in range(len(matrix[row])):
         matrix[row][col] *= k
 
-# <TO-DO> 
-# def row_addition(r1, r2, k):
-    
+def row_addition(r1, r2, k):
+    # r1 += kr2
+    for i in range(len(matrix[r1])):
+        matrix[r1][i] += k * matrix[r2][i]
 
 
 
