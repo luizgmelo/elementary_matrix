@@ -4,16 +4,16 @@ matrix = [
         [2, 5, 3]
          ]
 
-def row_switching(r1, r2):
+def row_switching(r1, r2, matrix):
     matrix[r1], matrix[r2] = matrix[r2], matrix[r1]
 
-def row_multiplication(row, k):
+def row_multiplication(row, k, matrix):
     if k == 0:
         return
     for col in range(len(matrix[row])):
         matrix[row][col] *= k
 
-def row_addition(r1, r2, k):
+def row_addition(r1, r2, k, matrix):
     # r1 += kr2
     for i in range(len(matrix[r1])):
         matrix[r1][i] += k * matrix[r2][i]
