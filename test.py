@@ -74,7 +74,30 @@ class TestElementaryMatrix(unittest.TestCase):
         row_multiplication(2, 7, matrix)
         self.assertEqual(matrix[2], [14,35,21])
 
-    # def test_row_addition(self):
+    def test_row_addition(self):
+        matrix = [
+            [2, 1, 3],
+            [4, 2, 2],
+            [2, 5, 3],
+        ]
+        """
+        L1 -> L1 + 2 * L2 
+        [10,5,7],
+        [4,2,2],
+        [2,5,3],
+        """
+        row_addition(0, 1, 2, matrix)
+        self.assertEqual(matrix[0], [10,5,7])
+        self.assertEqual(matrix[1], [4,2,2])
+        """
+        L2 -> L2 + 5 * L3 
+        [10,5,7],
+        [14,27,17],
+        [2,5,3],
+        """
+        row_addition(1, 2, 5, matrix)
+        self.assertEqual(matrix[1], [14,27,17])
+        self.assertEqual(matrix[2], [2,5,3])
 
 
 if __name__ == '__main__':
