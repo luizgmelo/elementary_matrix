@@ -99,6 +99,51 @@ class TestElementaryMatrix(unittest.TestCase):
         self.assertEqual(matrix[1], [14,27,17])
         self.assertEqual(matrix[2], [2,5,3])
 
+    def test_transform_matrix(self):
+        matrix = [
+            [2, 1, 3],
+            [4, 2, 2],
+            [2, 5, 3],
+        ]
+
+        transform_matrix(matrix)
+
+        self.assertEqual(matrix, [
+            [1.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0],
+            [0.0, 0.0, 1.0],
+        ])
+
+        matrix = [
+            [1, 3, 2],
+            [0, 1, -3/5],
+            [0, -12, -6],
+        ]
+
+        transform_matrix(matrix)
+
+        self.assertEqual(matrix, [
+            [1.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0],
+            [0.0, 0.0, 1.0],
+        ])
+            
+        matrix = [
+            [2, -2,   4, -2],
+            [2,  1,  10,  7],
+            [-4, 4,  -8,  4],
+            [4, -1,  14,  6],
+        ]
+        transform_matrix(matrix)
+
+
+        self.assertEqual(matrix, [
+            [1, 0, 4, 0],
+            [0, 1, 2, 0],
+            [0, 0, 0, 1],
+            [0, 0, 0, 0],
+        ])
+
 
 if __name__ == '__main__':
     unittest.main()
