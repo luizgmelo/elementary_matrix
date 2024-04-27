@@ -1,8 +1,16 @@
-## Matrix Operations (WARN: Portuguese Brazil)
+## Row Reduced Echelon Form (WARN: Portuguese Brazil)
+Forma da Matriz escada reduzida por linha.
 
 **O que é o projeto?**
+Transform matrix to reduce row echelon form made in python.
 
-Um programa que deve simular uma matriz.
+
+Um programa que transforma uma matriz para forma reduzida por linha feito em python.
+
+
+**Requisitos para bom entendimento do código/projeto** 
+- Conhecimento de Python
+- Saber transformar a matriz para forma escada reduzida por linha no papel.
 
 **Caracteristicas**
 O programa tem que ser feito para manipular matrizes.
