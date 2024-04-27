@@ -1,8 +1,21 @@
-matrix = [
-        [2, 1, 3],
-        [4, 2, 2],
-        [2, 5, 3],
-         ]
+def user_input():
+    R = int(input("Enter the number of rows:"))
+    C = int(input("Enter the number of columns:"))
+
+    matrix = []
+    print("Enter the entries rowwise: (type a number and press enter)")
+
+    if R == 0 and C == 0:
+        return []
+
+    for i in range(R):
+        row=[]
+        for j in range(C):
+            row.append(int(input()))
+        matrix.append(row)
+
+    return matrix
+
 
 def transform_matrix(matrix):
     if matrix == []:
@@ -80,4 +93,9 @@ def print_matrix(matrix):
         print()
     print("]")
 
+
+print("Welcome, create your matrix")
+matrix = user_input()
 transform_matrix(matrix)
+print("Row reduce echelon form:")
+print_matrix(matrix)
