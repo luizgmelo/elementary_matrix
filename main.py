@@ -93,9 +93,9 @@ def print_matrix(matrix):
         print()
     print("]")
 
-
-print("Welcome, create your matrix")
-matrix = user_input()
-transform_matrix(matrix)
-print("Row reduce echelon form:")
-print_matrix(matrix)
+if __name__ == "__main__":
+    print("Welcome, create your matrix")
+    matrix = user_input()
+    transform_matrix(matrix)
+    print("Row reduce echelon form:")
+    print_matrix(matrix)
