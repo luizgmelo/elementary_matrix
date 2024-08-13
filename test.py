@@ -10,7 +10,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [4, 2, 2],
             [2, 5, 3],
         ]
-
+        print_matrix(matrix)
         """
         L1 <-> L2
         [4,2,2]
@@ -49,6 +49,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [4, 2, 2],
             [2, 5, 3],
         ]
+        print_matrix(matrix)
         """
         L1 -> 8 * L1
         [16,8,24]
@@ -80,6 +81,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [4, 2, 2],
             [2, 5, 3],
         ]
+        print_matrix(matrix)
         """
         L1 -> L1 + 2 * L2 
         [10,5,7],
@@ -105,6 +107,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [4, 2, 2],
             [2, 5, 3],
         ]
+        print_matrix(matrix)
 
         transform_matrix(matrix)
 
@@ -119,6 +122,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [0, 1, -3/5],
             [0, -12, -6],
         ]
+        print_matrix(matrix)
 
         transform_matrix(matrix)
 
@@ -134,6 +138,7 @@ class TestElementaryMatrix(unittest.TestCase):
             [-4, 4,  -8,  4],
             [4, -1,  14,  6],
         ]
+        print_matrix(matrix)
         transform_matrix(matrix)
 
 

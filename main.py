@@ -77,35 +77,50 @@ def transform_matrix(matrix):
         for line_above in range(line-1, -1, -1):
             above_pivot_element = matrix[line_above][lead]
             row_addition(line_above, line, -1 * above_pivot_element, matrix)
-
-
-
+#=======================================================================================================================
 def row_switching(r1, r2, matrix):
     for col in range(len(matrix[0])):
         matrix[r1][col], matrix[r2][col] = matrix[r2][col], matrix[r1][col]
-
+    
+    printStep(f"Switching row {r1 + 1} with row {r2 + 1}.", matrix)
+#=======================================================================================================================
 def row_multiplication(row, k, matrix):
     if k == 0:
         return matrix
     for col in range(len(matrix[row])):
         matrix[row][col] *= k
-
+    
+    printStep(f"Multiplicating row {row + 1} by {k}.", matrix)
+#=======================================================================================================================
 def row_addition(r1, r2, k, matrix):
-    # r1 += kr2
     for i in range(len(matrix[r1])):
         matrix[r1][i] += k * matrix[r2][i]
-
+    
+    printStep(f"Adding the product between row {r2 + 1} and {k} to row {r1 + 1}.", matrix)
+#=======================================================================================================================
 def print_matrix(matrix):
-    print("[")
-    for i in range(len(matrix)):
-        for j in range(len(matrix[0])):
-            print(matrix[i][j], end="\t")
-        print()
-    print("]")
-
+    # Find the maximum width of the numbers in each column
+    col_widths = [max(len(str(cell)) for cell in col) for col in zip(*matrix)]
+    
+    # Print the matrix with walls and value alignment.
+    print("")
+    for row in matrix:
+        print("| " + " | ".join(f"{str(cell).rjust(col_widths[i])}" for i, cell in enumerate(row)) + " |")
+    print("")
+#=======================================================================================================================
 if __name__ == "__main__":
-    print("Welcome, create your matrix")
-    matrix = user_input()
-    transform_matrix(matrix)
-    print("Row reduce echelon form:")
-    print_matrix(matrix)
+    while(True):
+        stepCount = 1
+        print("Welcome, create your matrix")
+        matrix = user_input()
+        
+        print("This is your matrix:")
+        print_matrix(matrix)
+        print("-" * 60)
+        
+        transform_matrix(matrix)
+        print("Row reduce echelon form:")
+        print_matrix(matrix)
+        
+        print("=" * 60)
+#=======================================================================================================================
