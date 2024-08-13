@@ -99,7 +99,9 @@ def print_matrix(matrix):
 if __name__ == "__main__":
     while(True):
         stepCount = 1
+        print("="*30)
         print("Welcome, create your matrix")
+        print("="*30)
         matrix = user_input()
         
         print("This is your matrix:")
@@ -111,4 +113,11 @@ if __name__ == "__main__":
         print_matrix(matrix)
         
         print("=" * 60)
+        
+        option = "_"
+        while (option not in "YyNn"):
+            option = str(input("Continue? (Y/N)"))
+
+        if (option in "Nn"):
+            break
 #=======================================================================================================================
