@@ -45,12 +45,14 @@ def transform_matrix(matrix):
         row_switching(0, pivot_line, matrix)
 
     # Multiplique a primeira linha pelo inverso do pivô, para obter na primeira linha da coluna do pivô o elemento 1.
-    row_multiplication(0, 1/pivot, matrix)
+    if pivot != 1:
+        row_multiplication(0, 1/pivot, matrix)
 
     # Zerar os elementos da coluna do pivô.
     for line in range(1, len(matrix)):
         below_pivot_element = matrix[line][pivot_col] 
-        row_addition(line, 0, below_pivot_element * -1, matrix)
+        if below_pivot_element != 0:
+            row_addition(line, 0, below_pivot_element * -1, matrix)
     
     # Seja B a submatriz de A obtida retirando-se a primeira linha de A. Repita os passos 1 a 5 para a matriz B.
     if matrix[1:] != []:
