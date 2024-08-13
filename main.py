@@ -26,57 +26,45 @@ def user_input():
     return matrix
 #=======================================================================================================================
 def transform_matrix(matrix):
-    if matrix == []:
-        return []
+    for row in range(len(matrix)):
+        # Encontre a primeira coluna não nula (da esquerda para a direita). Esta coluna é chamada de coluna pivô.
+        # Na coluna pivô identifique o primeiro elemento (de cima para baixo) não nulo. Este elemento é chamado de elemento pivô.
+        pivot_col = None
+        pivot = 1
+        pivot_line = 0
 
-    # Encontre a primeira coluna não nula (da esquerda para a direita). Esta coluna é chamada de coluna pivô.
-    # Na coluna pivô identifique o primeiro elemento (de cima para baixo) não nulo. Este elemento é chamado de elemento pivô.
-    pivot_col = None
-    pivot = 1
-    pivot_line = 0
-
-    for col in range(len(matrix[0])):
-        for line in range(len(matrix)):
-            if (matrix[line][col] != 0):
-                pivot_col = col
-                pivot_line = line
-                pivot = matrix[line][col]
+        for col in range(row, len(matrix[0])):
+            for line in range(row, len(matrix)):
+                if (matrix[line][col] != 0):
+                    pivot_col = col
+                    pivot_line = line
+                    pivot = matrix[line][col]
+                    break
+            if (pivot_col != None):
                 break
-        if (pivot_col != None):
-            break
 
-    if pivot_col == None:
-        return
-    
-    # Se o elemento pivô não pertence à primeira linha então permute a linha que contenha o pivô pela primeira linha.
-    if pivot_line != 0:
-        row_switching(0, pivot_line, matrix)
+        if pivot_col == None:
+           break 
+        
+        # Se o elemento pivô não pertence à primeira linha então permute a linha que contenha o pivô pela primeira linha.
+        if pivot_line != 0:
+            row_switching(row, pivot_line, matrix)
 
-    # Multiplique a primeira linha pelo inverso do pivô, para obter na primeira linha da coluna do pivô o elemento 1.
-    if pivot != 1:
-        row_multiplication(0, 1/pivot, matrix)
+        # Multiplique a primeira linha pelo inverso do pivô, para obter na primeira linha da coluna do pivô o elemento 1.
+        if pivot != 1:
+            row_multiplication(row, 1/pivot, matrix)
 
-    # Zerar os elementos da coluna do pivô.
-    for line in range(1, len(matrix)):
-        below_pivot_element = matrix[line][pivot_col] 
-        if below_pivot_element != 0:
-            row_addition(line, 0, below_pivot_element * -1, matrix)
-    
-    # Seja B a submatriz de A obtida retirando-se a primeira linha de A. Repita os passos 1 a 5 para a matriz B.
-    if matrix[1:] != []:
-        transform_matrix(matrix[1:])
+        # Zerar os elementos da coluna do pivô que estão abaixo dele.
+        for line in range(row+1, len(matrix)):
+            below_pivot_element = matrix[line][pivot_col] 
+            if below_pivot_element != 0:
+                row_addition(line, row, below_pivot_element * -1, matrix)
 
-    # Determine all the leading ones in the row-echelon form obtained
-    leading_ones_index = []
-    for line in range(len(matrix)-1, -1, -1):
-        try:
-            lead = matrix[line].index(1)
-        except ValueError:
-            continue
-        leading_ones_index.append(lead)
-        for line_above in range(line-1, -1, -1):
-            above_pivot_element = matrix[line_above][lead]
-            row_addition(line_above, line, -1 * above_pivot_element, matrix)
+        # Zerar os elementos da coluna do pivô que estão acima dele.
+        for line in range(row-1, -1, -1):
+            above_pivot_element = matrix[line][pivot_col]
+            if above_pivot_element != 0:
+                row_addition(line, row, above_pivot_element * -1, matrix)
 #=======================================================================================================================
 def row_switching(r1, r2, matrix):
     for col in range(len(matrix[0])):
