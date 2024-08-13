@@ -1,3 +1,12 @@
+stepCount = 1
+
+def printStep(text, matrix):
+    global stepCount
+    print(f"Step {stepCount}: {text}")
+    print_matrix(matrix)
+    stepCount += 1
+    print("-" * 60)
+#=======================================================================================================================
 def user_input():
     R = int(input("Enter the number of rows:"))
     C = int(input("Enter the number of columns:"))
@@ -15,8 +24,7 @@ def user_input():
         matrix.append(row)
 
     return matrix
-
-
+#=======================================================================================================================
 def transform_matrix(matrix):
     if matrix == []:
         return []
