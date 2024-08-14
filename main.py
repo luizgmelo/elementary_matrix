@@ -78,7 +78,7 @@ def row_multiplication(row, k, matrix):
     for col in range(len(matrix[row])):
         matrix[row][col] *= k
     
-    printStep(f"Multiplicating row {row + 1} by {k}.", matrix)
+    printStep(f"Multiplicating row {row + 1} by {round(k, 2)}.", matrix)
 #=======================================================================================================================
 def row_addition(r1, r2, k, matrix):
     for i in range(len(matrix[r1])):
