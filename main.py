@@ -47,7 +47,7 @@ def transform_matrix(matrix):
            break 
         
         # Se o elemento pivô não pertence à primeira linha então permute a linha que contenha o pivô pela primeira linha.
-        if pivot_line != 0:
+        if pivot_line != row:
             row_switching(row, pivot_line, matrix)
 
         # Multiplique a primeira linha pelo inverso do pivô, para obter na primeira linha da coluna do pivô o elemento 1.
